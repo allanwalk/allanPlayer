@@ -15,15 +15,39 @@
 @implementation ViewController3
 {
     VLCMediaPlayer *vlcMediaPlayer;
+    BOOL _setPosition;
 }
+
 - (IBAction)stopAndStart:(id)sender {
     if(vlcMediaPlayer.isPlaying ){
         [vlcMediaPlayer pause];
-        self.btnStart.titleLabel.text = @"play";
+        [self.btnStart setTitle:@"play" forState:UIControlStateNormal];
     }
     else{
         [vlcMediaPlayer play];
-        self.btnStart.titleLabel.text = @"pause";
+        [self.btnStart setTitle:@"pause" forState:UIControlStateNormal];
+    }
+}
+- (IBAction)videoStop:(id)sender {
+    [vlcMediaPlayer stop];
+}
+
+- (IBAction)ProcessSliderAction:(UISlider *)sender
+{
+    // [self _resetIdleTimer];
+    
+    /* we need to limit the number of events sent by the slider, since otherwise, the user
+     * wouldn't see the I-frames when seeking on current mobile devices. This isn't a problem
+     * within the Simulator, but especially on older ARMv7 devices, it's clearly noticeable. */
+    [self performSelector:@selector(SetPositionForReal) withObject:nil afterDelay:0.3];
+    _setPosition = NO;
+}
+
+- (void)SetPositionForReal
+{
+    if (!_setPosition) {
+        vlcMediaPlayer.position = self.processSlider.value;
+        _setPosition = YES;
     }
 }
 
@@ -34,6 +58,11 @@
     self.imgView = [[UIImageView alloc] init];
     
     self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
+    
+    self.processSlider = [[UISlider alloc]init];
+    self.processSlider.frame = CGRectMake(120, self.view.frame.size.height - 85 , self.view.frame.size.width - 140, 21);
+    [self.view addSubview: self.processSlider];
+    [self.processSlider addTarget:self action:@selector(ProcessSliderAction:) forControlEvents:UIControlEventValueChanged];
     
     // Initialize media player
     vlcMediaPlayer = [[VLCMediaPlayer alloc] init];
@@ -52,7 +81,9 @@
     vlcMediaPlayer.media = [VLCMedia mediaWithURL:[NSURL URLWithString:strUrl]];
     
     [vlcMediaPlayer play];
-    self.btnStart.titleLabel.text = @"pause";
+    [self.btnStart setTitle:@"pause" forState:UIControlStateNormal];
+    [self.btnStop setTitle:@"stop" forState:UIControlStateNormal];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -73,6 +104,9 @@
 {
 #pragma mark media handling
     NSLog(@"%@",keyPath);
+    if([keyPath isEqualToString:@"state"]){
+        NSLog(@"%@",VLCMediaPlayerStateToString([vlcMediaPlayer state]));
+    }
     /*if([keyPath isEqualToString:@"state"]){
      NSLog(@"observeValueForKeyPath");
      VLCMediaPlayerState curState = [_mediaPlayer state];

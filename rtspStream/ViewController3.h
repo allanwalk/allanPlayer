@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MobileVLCKit/MobileVLCKit.h>
 
-@interface ViewController3 : UIViewController <VLCMediaDelegate>
+@interface ViewController3 : UIViewController 
 
-@property (nonatomic, strong) IBOutlet UIImageView *imgMovieView;
+@property (nonatomic, strong) IBOutlet UIImageView *imgView;//*imgMovieView;
+@property (nonatomic, strong) IBOutlet UISlider *processSlider;
+@property (weak, nonatomic) IBOutlet UIButton *btnStart;
 
 @end

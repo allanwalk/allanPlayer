@@ -14,34 +14,54 @@
 
 @implementation ViewController3
 {
-    VLCMediaPlayer *_mediaPlayer;
+    VLCMediaPlayer *vlcMediaPlayer;
+}
+- (IBAction)stopAndStart:(id)sender {
+    if(vlcMediaPlayer.isPlaying ){
+        [vlcMediaPlayer pause];
+        self.btnStart.titleLabel.text = @"play";
+    }
+    else{
+        [vlcMediaPlayer play];
+        self.btnStart.titleLabel.text = @"pause";
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"3");
     
-    self.imgMovieView = [[UIImageView alloc] init];
+    self.imgView = [[UIImageView alloc] init];
     
-    self.imgMovieView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
+    self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
     
     // Initialize media player
-    _mediaPlayer = [[VLCMediaPlayer alloc] init];
-    _mediaPlayer.delegate = self;
-    _mediaPlayer.drawable = self.imgMovieView;
+    vlcMediaPlayer = [[VLCMediaPlayer alloc] init];
+    vlcMediaPlayer.delegate = self;
+    vlcMediaPlayer.drawable = self.imgView;
     
-    [self.view addSubview:self.imgMovieView];
+    [self.view addSubview:self.imgView];
     
     /* listen for notifications from the player */
-    [_mediaPlayer addObserver:self forKeyPath:@"time" options:0 context:nil];
-    [_mediaPlayer addObserver:self forKeyPath:@"remainingTime" options:0 context:nil];
-    [_mediaPlayer addObserver:self forKeyPath:@"state" options:0 context:nil];
+    [vlcMediaPlayer addObserver:self forKeyPath:@"time" options:0 context:nil];
+    [vlcMediaPlayer addObserver:self forKeyPath:@"remainingTime" options:0 context:nil];
+    [vlcMediaPlayer addObserver:self forKeyPath:@"state" options:0 context:nil];
     // Do any additional setup after loading the view.
     
     NSString* strUrl = [NSString stringWithFormat:@"rtsp://184.72.239.149/vod/mp4:BigBuckBunny_175k.mov"];
-    _mediaPlayer.media = [VLCMedia mediaWithURL:[NSURL URLWithString:strUrl]];
+    vlcMediaPlayer.media = [VLCMedia mediaWithURL:[NSURL URLWithString:strUrl]];
     
-    [_mediaPlayer play];
+    [vlcMediaPlayer play];
+    self.btnStart.titleLabel.text = @"pause";
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [vlcMediaPlayer pause];
+    NSLog(@"viewwillDisappear");
 }
 
 - (void)didReceiveMemoryWarning {

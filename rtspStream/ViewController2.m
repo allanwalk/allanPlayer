@@ -44,6 +44,8 @@
     }
     
     [vlcMediaPlayer play];
+    [self.btnStart setTitle:@"pause" forState:UIControlStateNormal];
+    [self.btnStop setTitle:@"stop" forState:UIControlStateNormal];
 }
 
 - (IBAction)ProcessSliderAction:(UISlider *)sender

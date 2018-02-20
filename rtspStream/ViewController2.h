@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MobileVLCKit/MobileVLCKit.h>
 
 @interface ViewController2 : UIViewController
+@property (nonatomic, strong) IBOutlet UIImageView *imgView;//*imgMovieView;
+@property (nonatomic, strong) IBOutlet UISlider *processSlider;
+@property (weak, nonatomic) IBOutlet UIButton *btnStart;
+@property (weak, nonatomic) IBOutlet UIButton *btnStop;
 
 @end

@@ -17,10 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="Tlw-g2-LSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rB-58-zcg">
+                                <rect key="frame" x="0.0" y="573" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="stopAndStart:" destination="0Uk-BE-fv3" eventType="touchUpInside" id="k8n-8g-WBD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOW-j5-ztk">
+                                <rect key="frame" x="54" y="573" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="videoStop:" destination="0Uk-BE-fv3" eventType="touchUpInside" id="heg-NX-HA3"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="G1m-ex-rlD"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="Z47-ea-bIL"/>
+                    <connections>
+                        <outlet property="btnStart" destination="7rB-58-zcg" id="nev-0f-8un"/>
+                        <outlet property="btnStop" destination="AOW-j5-ztk" id="E1m-KL-8vL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpv-h3-wgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

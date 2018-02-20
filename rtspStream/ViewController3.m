@@ -46,6 +46,8 @@
 - (void)SetPositionForReal
 {
     if (!_setPosition) {
+        [vlcMediaPlayer stop];
+        [vlcMediaPlayer play];
         vlcMediaPlayer.position = self.processSlider.value;
         _setPosition = YES;
     }
@@ -53,6 +55,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"viewDidAppear");
+    
     NSLog(@"3");
     
     self.imgView = [[UIImageView alloc] init];
@@ -83,15 +93,33 @@
     [vlcMediaPlayer play];
     [self.btnStart setTitle:@"pause" forState:UIControlStateNormal];
     [self.btnStop setTitle:@"stop" forState:UIControlStateNormal];
-
+    
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [vlcMediaPlayer pause];
+    
+    if(vlcMediaPlayer)
+    {
+        if(vlcMediaPlayer.media)
+            [vlcMediaPlayer stop];
+        
+        @try {
+            [vlcMediaPlayer removeObserver:self forKeyPath:@"time"];
+            [vlcMediaPlayer removeObserver:self forKeyPath:@"remainingTime"];
+            [vlcMediaPlayer removeObserver:self forKeyPath:@"state"];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"we weren't an observer yet");
+        }
+        
+        if(vlcMediaPlayer)
+        {
+            vlcMediaPlayer.delegate = nil;
+            vlcMediaPlayer = nil;
+        }
+    }
     NSLog(@"viewwillDisappear");
 }
 

@@ -8,7 +8,7 @@
 
 #import "ViewController2.h"
 
-@interface ViewController2 ()
+@interface ViewController2 () <VLCMediaPlayerDelegate>
 
 @end
 
@@ -46,8 +46,6 @@
 - (void)SetPositionForReal
 {
     if (!_setPosition) {
-        [vlcMediaPlayer stop];
-        [vlcMediaPlayer play];
         vlcMediaPlayer.position = self.processSlider.value;
         _setPosition = YES;
     }
@@ -56,6 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpView];
     
 }
 
@@ -63,18 +62,8 @@
 {
     NSLog(@"viewDidAppear");
     
-    NSLog(@"3");
+    NSLog(@"2");
     
-    self.imgView = [[UIImageView alloc] init];
-    
-    self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
-    
-    self.processSlider = [[UISlider alloc]init];
-    self.processSlider.frame = CGRectMake(120, self.view.frame.size.height - 85 , self.view.frame.size.width - 140, 21);
-    [self.view addSubview: self.processSlider];
-    [self.processSlider addTarget:self action:@selector(ProcessSliderAction:) forControlEvents:UIControlEventValueChanged];
-    
-    // Initialize media player
     vlcMediaPlayer = [[VLCMediaPlayer alloc] init];
     vlcMediaPlayer.delegate = self;
     vlcMediaPlayer.drawable = self.imgView;
@@ -87,8 +76,8 @@
     [vlcMediaPlayer addObserver:self forKeyPath:@"state" options:0 context:nil];
     // Do any additional setup after loading the view.
     
-    NSString* strUrl = [NSString stringWithFormat:@"rtsp://184.72.239.149/vod/mp4:BigBuckBunny_175k.mov"];
-    vlcMediaPlayer.media = [VLCMedia mediaWithURL:[NSURL URLWithString:strUrl]];
+    //NSString* strUrl = [NSString stringWithFormat:@"rtsp://184.72.239.149/vod/mp4:BigBuckBunny_175k.mov"];
+    vlcMediaPlayer.media = [VLCMedia mediaWithPath:[[NSBundle mainBundle] pathForResource:@"bubble" ofType:@"mp4"]];
     
     [vlcMediaPlayer play];
     [self.btnStart setTitle:@"pause" forState:UIControlStateNormal];
@@ -185,6 +174,14 @@
 
 -(void) setUpView
 {
+    self.imgView = [[UIImageView alloc] init];
+    
+    self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
+    
+    self.processSlider = [[UISlider alloc]init];
+    self.processSlider.frame = CGRectMake(120, self.view.frame.size.height - 85 , self.view.frame.size.width - 140, 21);
+    [self.view addSubview: self.processSlider];
+    [self.processSlider addTarget:self action:@selector(ProcessSliderAction:) forControlEvents:UIControlEventValueChanged];
     
 }
 

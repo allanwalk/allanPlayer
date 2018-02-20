@@ -62,6 +62,8 @@
 		21F03730636A2B3765F83282 /* Pods-rtspStreamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rtspStreamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rtspStreamUITests/Pods-rtspStreamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		27E4B6D87DF22B6CA762EF21 /* Pods-rtspStreamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rtspStreamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rtspStreamTests/Pods-rtspStreamTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C374B29901DC5CB36855C7D /* Pods-rtspStream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rtspStream.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rtspStream/Pods-rtspStream.debug.xcconfig"; sourceTree = "<group>"; };
+		752177EB203BFE58000427B7 /* airplanelanding.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = airplanelanding.mp4; sourceTree = "<group>"; };
+		752177EC203BFE58000427B7 /* bubble.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = bubble.mp4; sourceTree = "<group>"; };
 		753C8A5820317E6600BAF12D /* rtspStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rtspStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C8A5B20317E6600BAF12D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		753C8A5C20317E6600BAF12D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -187,6 +189,8 @@
 				753C8A6620317E6600BAF12D /* LaunchScreen.storyboard */,
 				753C8A6920317E6600BAF12D /* Info.plist */,
 				753C8A6A20317E6600BAF12D /* main.m */,
+				752177EB203BFE58000427B7 /* airplanelanding.mp4 */,
+				752177EC203BFE58000427B7 /* bubble.mp4 */,
 			);
 			path = rtspStream;
 			sourceTree = "<group>";

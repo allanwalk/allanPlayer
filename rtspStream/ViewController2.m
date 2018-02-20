@@ -29,6 +29,7 @@
     }
 }
 - (IBAction)videoStop:(id)sender {
+    self.processSlider.value =0.0;
     [vlcMediaPlayer stop];
 }
 

@@ -29,6 +29,7 @@
     }
 }
 - (IBAction)videoStop:(id)sender {
+    self.processSlider.value =0.0;
     [vlcMediaPlayer stop];
 }
 
@@ -46,8 +47,6 @@
 - (void)SetPositionForReal
 {
     if (!_setPosition) {
-        [vlcMediaPlayer stop];
-        [vlcMediaPlayer play];
         vlcMediaPlayer.position = self.processSlider.value;
         _setPosition = YES;
     }
@@ -56,7 +55,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    [self setUpView];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -64,15 +64,6 @@
     NSLog(@"viewDidAppear");
     
     NSLog(@"3");
-    
-    self.imgView = [[UIImageView alloc] init];
-    
-    self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
-    
-    self.processSlider = [[UISlider alloc]init];
-    self.processSlider.frame = CGRectMake(120, self.view.frame.size.height - 85 , self.view.frame.size.width - 140, 21);
-    [self.view addSubview: self.processSlider];
-    [self.processSlider addTarget:self action:@selector(ProcessSliderAction:) forControlEvents:UIControlEventValueChanged];
     
     // Initialize media player
     vlcMediaPlayer = [[VLCMediaPlayer alloc] init];
@@ -185,6 +176,14 @@
 
 -(void) setUpView
 {
+    self.imgView = [[UIImageView alloc] init];
+    
+    self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
+    
+    self.processSlider = [[UISlider alloc]init];
+    self.processSlider.frame = CGRectMake(120, self.view.frame.size.height - 85 , self.view.frame.size.width - 140, 21);
+    [self.view addSubview: self.processSlider];
+    [self.processSlider addTarget:self action:@selector(ProcessSliderAction:) forControlEvents:UIControlEventValueChanged];
     
 }
 

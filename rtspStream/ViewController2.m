@@ -16,6 +16,7 @@
 {
     VLCMediaPlayer *vlcMediaPlayer;
     BOOL _setPosition;
+    BOOL VideoAB;
 }
 
 - (IBAction)stopAndStart:(id)sender {
@@ -31,6 +32,18 @@
 - (IBAction)videoStop:(id)sender {
     self.processSlider.value =0.0;
     [vlcMediaPlayer stop];
+}
+- (IBAction)videoSwitch:(id)sender {
+    if(!VideoAB){
+        vlcMediaPlayer.media = [VLCMedia mediaWithPath:[[NSBundle mainBundle] pathForResource:@"bubble" ofType:@"mp4"]];
+        VideoAB = !VideoAB;
+    }
+    else{
+        vlcMediaPlayer.media = [VLCMedia mediaWithPath:[[NSBundle mainBundle] pathForResource:@"airplanelanding" ofType:@"mp4"]];
+        VideoAB = !VideoAB;
+    }
+    
+    [vlcMediaPlayer play];
 }
 
 - (IBAction)ProcessSliderAction:(UISlider *)sender
@@ -79,6 +92,7 @@
     
     //NSString* strUrl = [NSString stringWithFormat:@"rtsp://184.72.239.149/vod/mp4:BigBuckBunny_175k.mov"];
     vlcMediaPlayer.media = [VLCMedia mediaWithPath:[[NSBundle mainBundle] pathForResource:@"bubble" ofType:@"mp4"]];
+    VideoAB = YES;
     
     [vlcMediaPlayer play];
     [self.btnStart setTitle:@"pause" forState:UIControlStateNormal];
@@ -124,57 +138,19 @@
     NSLog(@"%@",keyPath);
     if([keyPath isEqualToString:@"state"]){
         NSLog(@"%@",VLCMediaPlayerStateToString([vlcMediaPlayer state]));
+        if([vlcMediaPlayer state] == VLCMediaPlayerStateStopped){
+            [self.btnStart setTitle:@"play" forState:UIControlStateNormal];
+        }
     }
-    /*if([keyPath isEqualToString:@"state"]){
-     NSLog(@"observeValueForKeyPath");
-     VLCMediaPlayerState curState = [_mediaPlayer state];
-     NSLog(@"%ld",curState);
-     if(curState == VLCMediaPlayerStateError)
-     {
-     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Error!" delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
-     [alert show];
-     }
-     if(curState == VLCMediaPlayerStateStopped || curState == VLCMediaPlayerStateEnded)
-     {
-     [self GetPlaybackFilePath:_idxPlayList];
-     UIButton *btn = (UIButton*)[_footerPanel viewWithTag:1];
-     [btn setImage:[UIImage imageNamed:@"btn_PB_play_n.png"] forState:UIControlStateNormal];
-     [btn setImage:[UIImage imageNamed:@"btn_PB_play_h.png"] forState:UIControlStateHighlighted];
-     btn = (UIButton*)[_footerLandPanel viewWithTag:1];
-     [btn setImage:[UIImage imageNamed:@"btn_PB_play_n.png"] forState:UIControlStateNormal];
-     [btn setImage:[UIImage imageNamed:@"btn_PB_play_h.png"] forState:UIControlStateHighlighted];
-     
-     // Loading settings
-     settingObj = [SettingObject settingObjectFromData:[dicNVR objectForKey:@"setting_info"]];
-     // Prevent screen will be locked when this app is running
-     if(settingObj.lockScreen)
-     [UIApplication sharedApplication].idleTimerDisabled = YES;
-     else
-     [UIApplication sharedApplication].idleTimerDisabled = NO;
-     }
-     if(curState == VLCMediaPlayerStatePaused)
-     {
-     // Loading settings
-     settingObj = [SettingObject settingObjectFromData:[dicNVR objectForKey:@"setting_info"]];
-     // Prevent screen will be locked when this app is running
-     if(settingObj.lockScreen)
-     [UIApplication sharedApplication].idleTimerDisabled = YES;
-     else
-     [UIApplication sharedApplication].idleTimerDisabled = NO;
-     }
-     return ;
-     }
-     
-     self.positionSlider.value = [_mediaPlayer position];
-     // _timeDisplay.text = [[_mediaPlayer time] stringValue];
-     NSDateFormatter *_dateFormatter = [[NSDateFormatter alloc] init];
-     [_dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-     NSDate *date = [_dateFormatter dateFromString:_strFileTime];
-     _timeDisplay.text = [_dateFormatter stringFromDate:[date dateByAddingTimeInterval:([[_mediaPlayer time] intValue] / 1000)]];*/
+    
+    if([keyPath isEqualToString:@"time"] || [keyPath isEqualToString:@"remainingtime"]){
+        self.processSlider.value = [vlcMediaPlayer position];
+    }
 }
 
 -(void) setUpView
 {
+    self.view.backgroundColor = [UIColor blackColor];
     self.imgView = [[UIImageView alloc] init];
     
     self.imgView.frame = CGRectMake(0,self.view.frame.size.height/2 - 400/2,self.view.frame.size.width,400);
@@ -184,6 +160,36 @@
     [self.view addSubview: self.processSlider];
     [self.processSlider addTarget:self action:@selector(ProcessSliderAction:) forControlEvents:UIControlEventValueChanged];
     
+    
+    [self.btnVideoSwitch setTitle:@"videoSwitch" forState:UIControlStateNormal];
+    [self.btnVideoSwitch.layer setCornerRadius:10]; //设置半径
+    [self.btnVideoSwitch.layer setBorderWidth:1.0]; //边框宽度
+    [self.btnStart.layer setCornerRadius:10]; //设置半径
+    [self.btnStart.layer setBorderWidth:1.0]; //边框宽度
+    [self.btnStop.layer setCornerRadius:10]; //设置半径
+    [self.btnStop.layer setBorderWidth:1.0]; //边框宽度
+    
+}
+
+#pragma mark - VLC media player control
+
+- (void)mediaPlayerStateChanged:(NSNotification *)aNotification
+{
+    NSLog(@"mediaPlayerStateChanged");
+    VLCMediaPlayerState curState = [vlcMediaPlayer state];
+    if(curState == VLCMediaPlayerStateError)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Error!" delegate:self cancelButtonTitle:nil otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        [alert show];
+    }
+    if(curState == VLCMediaPlayerStateStopped || curState == VLCMediaPlayerStateEnded)
+    {
+        
+    }
+    if(curState == VLCMediaPlayerStatePaused)
+    {
+        
+    }
 }
 
 /*

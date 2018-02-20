@@ -14,5 +14,6 @@
 @property (nonatomic, strong) IBOutlet UISlider *processSlider;
 @property (weak, nonatomic) IBOutlet UIButton *btnStart;
 @property (weak, nonatomic) IBOutlet UIButton *btnStop;
+@property (weak, nonatomic) IBOutlet UIButton *btnVideoSwitch;
 
 @end

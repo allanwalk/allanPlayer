@@ -13,7 +13,7 @@
         <!--Playback-->
         <scene sceneID="izH-Bf-KLx">
             <objects>
-                <viewController id="0Uk-BE-fv3" customClass="ViewController2" sceneMemberID="viewController">
+                <viewController id="0Uk-BE-fv3" customClass="ViewControllerPlayback" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tlw-g2-LSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +85,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qAy-xa-Jgd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="0Uk-BE-fv3" kind="relationship" relationship="viewControllers" id="NA7-Gp-hUW"/>
@@ -99,7 +99,7 @@
         <!--RtspStream-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController3" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewControllerRTSPStream" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -18,8 +18,6 @@
 		753C8A6B20317E6600BAF12D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 753C8A6A20317E6600BAF12D /* main.m */; };
 		753C8A7520317E6700BAF12D /* rtspStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 753C8A7420317E6700BAF12D /* rtspStreamTests.m */; };
 		753C8A8020317E6700BAF12D /* rtspStreamUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 753C8A7F20317E6700BAF12D /* rtspStreamUITests.m */; };
-		753C8A91203295E000BAF12D /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 753C8A90203295E000BAF12D /* ViewController2.m */; };
-		753C8A94203296B400BAF12D /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 753C8A93203296B400BAF12D /* ViewController3.m */; };
 		753C8A9F2032AC7D00BAF12D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753C8A9E2032AC7D00BAF12D /* Foundation.framework */; };
 		753C8AA12032AC8500BAF12D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753C8AA02032AC8500BAF12D /* AVFoundation.framework */; };
 		753C8AA32032AC8D00BAF12D /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753C8AA22032AC8D00BAF12D /* VideoToolbox.framework */; };
@@ -36,6 +34,8 @@
 		753C8ABA2032BB5900BAF12D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 753C8AB02032BAC300BAF12D /* libz.tbd */; };
 		753C8ABF2032BBD400BAF12D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 753C8ABB2032BBA500BAF12D /* CoreMedia.framework */; };
 		75DDF18F20333530009B6348 /* MobileVLCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DDF18E20333530009B6348 /* MobileVLCKit.framework */; };
+		75E299A9203E9CA500E3F060 /* ViewControllerPlayback.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E299A6203E9CA500E3F060 /* ViewControllerPlayback.m */; };
+		75E299AA203E9CA500E3F060 /* ViewControllerRTSPStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 75E299A8203E9CA500E3F060 /* ViewControllerRTSPStream.m */; };
 		8B6E3840DC42BCE346E3475F /* Pods_rtspStreamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB0F73BE692C32608C07E50 /* Pods_rtspStreamUITests.framework */; };
 		B5587519564126761FCE671F /* Pods_rtspStream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A91A2A1A576326053BE5FE /* Pods_rtspStream.framework */; };
 /* End PBXBuildFile section */
@@ -82,10 +82,6 @@
 		753C8A7B20317E6700BAF12D /* rtspStreamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rtspStreamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		753C8A7F20317E6700BAF12D /* rtspStreamUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rtspStreamUITests.m; sourceTree = "<group>"; };
 		753C8A8120317E6700BAF12D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		753C8A8F203295E000BAF12D /* ViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
-		753C8A90203295E000BAF12D /* ViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
-		753C8A92203296B400BAF12D /* ViewController3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
-		753C8A93203296B400BAF12D /* ViewController3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		753C8A9C2032AC7400BAF12D /* libMobileVLCKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobileVLCKit.a; path = rtspStream/libVLC/libMobileVLCKit.a; sourceTree = "<group>"; };
 		753C8A9E2032AC7D00BAF12D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		753C8AA02032AC8500BAF12D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +100,10 @@
 		753C8ABB2032BBA500BAF12D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		753C8ABD2032BBBA00BAF12D /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		75DDF18E20333530009B6348 /* MobileVLCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileVLCKit.framework; path = "Pods/MobileVLCKit/MobileVLCKit-binary/MobileVLCKit.framework"; sourceTree = "<group>"; };
+		75E299A5203E9CA400E3F060 /* ViewControllerPlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerPlayback.h; sourceTree = "<group>"; };
+		75E299A6203E9CA500E3F060 /* ViewControllerPlayback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerPlayback.m; sourceTree = "<group>"; };
+		75E299A7203E9CA500E3F060 /* ViewControllerRTSPStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerRTSPStream.h; sourceTree = "<group>"; };
+		75E299A8203E9CA500E3F060 /* ViewControllerRTSPStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerRTSPStream.m; sourceTree = "<group>"; };
 		CAB0F73BE692C32608C07E50 /* Pods_rtspStreamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rtspStreamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A91A2A1A576326053BE5FE /* Pods_rtspStream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rtspStream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC5B6802E39FACBFDB72C3C9 /* Pods-rtspStream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rtspStream.release.xcconfig"; path = "Pods/Target Support Files/Pods-rtspStream/Pods-rtspStream.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,10 +182,10 @@
 				753C8A5C20317E6600BAF12D /* AppDelegate.m */,
 				753C8A5E20317E6600BAF12D /* ViewController.h */,
 				753C8A5F20317E6600BAF12D /* ViewController.m */,
-				753C8A8F203295E000BAF12D /* ViewController2.h */,
-				753C8A90203295E000BAF12D /* ViewController2.m */,
-				753C8A92203296B400BAF12D /* ViewController3.h */,
-				753C8A93203296B400BAF12D /* ViewController3.m */,
+				75E299A5203E9CA400E3F060 /* ViewControllerPlayback.h */,
+				75E299A6203E9CA500E3F060 /* ViewControllerPlayback.m */,
+				75E299A7203E9CA500E3F060 /* ViewControllerRTSPStream.h */,
+				75E299A8203E9CA500E3F060 /* ViewControllerRTSPStream.m */,
 				753C8A6120317E6600BAF12D /* Main.storyboard */,
 				753C8A6420317E6600BAF12D /* Assets.xcassets */,
 				753C8A6620317E6600BAF12D /* LaunchScreen.storyboard */,
@@ -548,10 +548,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				753C8A6020317E6600BAF12D /* ViewController.m in Sources */,
-				753C8A91203295E000BAF12D /* ViewController2.m in Sources */,
 				753C8A6B20317E6600BAF12D /* main.m in Sources */,
+				75E299A9203E9CA500E3F060 /* ViewControllerPlayback.m in Sources */,
+				75E299AA203E9CA500E3F060 /* ViewControllerRTSPStream.m in Sources */,
 				753C8A5D20317E6600BAF12D /* AppDelegate.m in Sources */,
-				753C8A94203296B400BAF12D /* ViewController3.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ try to fulfill rtsp stream and player behavior
 
 -------------------------------------------------------------------------------------------------
 
-There are two view in this app.
+In this app, we have two view with tab-bar
 
 First view is demo how to play local video which is put in project at first.  You can switch video by button at the top.
 

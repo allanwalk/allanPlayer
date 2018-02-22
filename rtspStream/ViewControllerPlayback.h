@@ -1,5 +1,5 @@
 //
-//  ViewController3.h
+//  ViewControllerPlayback.h
 //  rtspStream
 //
 //  Created by AllanChen on 2018/2/13.
@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MobileVLCKit/MobileVLCKit.h>
 
-@interface ViewController3 : UIViewController 
-
+@interface ViewControllerPlayback : UIViewController
 @property (nonatomic, strong) IBOutlet UIImageView *imgView;//*imgMovieView;
 @property (nonatomic, strong) IBOutlet UISlider *processSlider;
 @property (weak, nonatomic) IBOutlet UIButton *btnStart;
 @property (weak, nonatomic) IBOutlet UIButton *btnStop;
-@property (weak, nonatomic) IBOutlet UITextField *textUrl;
-@property (weak, nonatomic) IBOutlet UIButton *btnUrlUpdate;
+@property (weak, nonatomic) IBOutlet UIButton *btnVideoSwitch;
 
 @end

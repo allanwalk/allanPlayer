@@ -1,18 +1,18 @@
 //
-//  ViewController3.m
+//  ViewControllerRTSPStream.m
 //  rtspStream
 //
 //  Created by AllanChen on 2018/2/13.
 //  Copyright © 2018年 allanChen. All rights reserved.
 //
 
-#import "ViewController3.h"
+#import "ViewControllerRTSPStream.h"
 
-@interface ViewController3 ()  <VLCMediaPlayerDelegate>
+@interface ViewControllerRTSPStream ()  <VLCMediaPlayerDelegate>
 
 @end
 
-@implementation ViewController3
+@implementation ViewControllerRTSPStream
 {
     VLCMediaPlayer *vlcMediaPlayer;
     BOOL _setPosition;

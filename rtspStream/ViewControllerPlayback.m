@@ -1,18 +1,18 @@
 //
-//  ViewController2.m
+//  ViewControllerPlayback.m
 //  rtspStream
 //
 //  Created by AllanChen on 2018/2/13.
 //  Copyright © 2018年 allanChen. All rights reserved.
 //
 
-#import "ViewController2.h"
+#import "ViewControllerPlayback.h"
 
-@interface ViewController2 () <VLCMediaPlayerDelegate>
+@interface ViewControllerPlayback () <VLCMediaPlayerDelegate>
 
 @end
 
-@implementation ViewController2
+@implementation ViewControllerPlayback
 {
     VLCMediaPlayer *vlcMediaPlayer;
     BOOL _setPosition;

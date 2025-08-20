@@ -1,29 +1,43 @@
 # allanPlayer
-try to fulfill rtsp stream and player behavior
 
+An iOS application for RTSP streaming and local video playback, built with VLCKit framework.
 
-1.Install cocoapods in  your enviornment
+## Features
 
-- [sudo] gem install cocoapods
-- pod setup
+- **Dual Interface Design**: Tab-based navigation with two main functionalities
+- **Local Video Playback**: Play embedded video files with easy switching controls
+- **RTSP Stream Support**: Real-time streaming protocol support with custom URL input
+- **VLCKit Integration**: Leverages VLC's powerful media playback capabilities
 
-2.Download needed framework with cocoapods, which is settle down in podfile
+## Project Structure
 
-- pod install
+- `rtspStream/`: Main application source code
+- `rtspStreamTests/`: Unit tests
+- `rtspStreamUITests/`: UI automation tests
 
-3.Open rtspStream.xcworkplace and build the porject.
+## Setup Instructions
 
--------------------------------------------------------------------------------------------------
+1. Open `rtspStream.xcworkspace` in Xcode
+2. Build and run the project
 
-In this app, we have two view with tab-bar
+## Usage
 
-First view is demo how to play local video which is put in project at first.  You can switch video by button at the top.
+### Local Video Tab
+- Plays pre-bundled video files (airplanelanding.mp4, bubble.mp4)
+- Switch between videos using the top navigation buttons
 
-Second view is demo for rtsp stream. I have set up a stream by url and you can input your own url to try . Here is another sample url you can try. "http://streams.videolan.org/streams/mp4/Mr_MrsSmith-h264_aac.mp4" It is from VLC official  sample.
+### RTSP Stream Tab
+- Input custom RTSP URLs for live streaming
+- Default test stream available
+- Sample URL: `http://streams.videolan.org/streams/mp4/Mr_MrsSmith-h264_aac.mp4`
 
+## Technical Details
 
-Special thanks:
-"https://www.videolan.org/vlc/index.zh-TW.html" for their library
-"https://videos.pexels.com/" for their video
+- **Platform**: iOS
+- **Framework**: VLCKit for media playback
+- **Architecture**: Tab-based view controllers
 
+## Acknowledgments
 
+- [VLC Media Player](https://www.videolan.org/vlc/index.zh-TW.html) - For their powerful media library
+- [Pexels](https://videos.pexels.com/) - For providing sample video content
